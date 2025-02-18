@@ -1,0 +1,105 @@
+body{
+        background: linear-gradient(145deg, #131313, #013995 190%);
+    
+}
+
+section{
+    margin: auto;
+    max-width:  1300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 70px);
+}
+
+section .group-text{
+    /*margin-right: 50px;*/
+    width: 50%;
+}
+
+section .group-text h1{
+    color: #26baff;
+    font-size: 40px;
+}
+
+section .group-text p{
+    color: white;
+    font-size: 20px;
+    /*margin-right: 3rem;*/
+}
+
+section .group-text .group-buttons{
+    margin: 30px 0;
+}
+
+section .group-text .group-buttons a{
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    
+    
+}
+
+section .group-text .group-button a:hover{
+    transform: scale(1.1);
+
+}
+
+section .group-text .group-buttons .bt-entrar{
+    background-color: #26baff;
+    color: white;
+}
+
+section .group-text .group-buttons .bt-entrar:hover{
+    background: #60c5f42d;
+}
+
+section .group-text .group-buttons .bt-cadastrar{
+    border: 1px solid #26baff;
+    color: #26baff;
+    margin-left: 5px;
+
+}
+
+section .group-text .group-buttons .bt-cadastrar:hover{
+    color: white;
+    background: #60c5f42d;
+}
+
+section .group-image{
+    width: 60%;
+}
+
+section .group-image img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+/*ICONES*/
+
+.group-icons{
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+
+.group-icons a{
+    display: inline-block;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.789);
+    margin: 0px 5px;
+    transition: all 0.3s ease;
+}
+
+.group-icons a:hover{
+    color: #26baff;
+    transform: scale(1.1);
+    
+}

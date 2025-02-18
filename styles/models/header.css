@@ -1,0 +1,40 @@
+header{
+    background: none;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /*Espaçamento entre os elementos*/
+    padding: 0px 50px;
+}
+
+header h1{
+    color: white;
+}
+
+header nav ul{
+    display: flex;
+    flex-direction: row;
+}
+
+header nav ul li{
+    margin: 0 10px;
+}
+
+header nav ul li a{
+    display: inline-block;
+    color: white;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 8px;
+
+}
+
+/*Quando passa o mouse em cima muda a cor*/
+header nav ul li a:hover{
+    color: #26baff;
+    transform: scale(1.1);
+    background: #60c5f42d;
+}
+

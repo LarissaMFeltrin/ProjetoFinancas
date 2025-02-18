@@ -1,0 +1,62 @@
+header .auth-buttons a{
+    display: inline-block;
+    margin: 0 2px;
+    padding: 5px 15px;
+    border-radius: 8px;    
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+header .auth-buttons a:hover{
+    transform: scale(1.1);
+
+}
+
+header .auth-buttons .bt-entrar{
+    background-color: #26baff;
+    color: white;
+}
+
+header .auth-buttons .bt-entrar:hover{
+    background: #60c5f42d;
+}
+
+header .auth-buttons .bt-cadastrar{
+    border: 1px solid #26baff;
+    color: #26baff;
+
+}
+
+header .auth-buttons .bt-cadastrar:hover{
+    color: white;
+    background: #60c5f42d;
+}
+
+
+/*CADASTRAR*/
+
+.box-cadastro .buttons-group button{
+    font-size: 40px;
+    border-style: none;
+    background: transparent;
+    color: #26baff;
+    transition: all 0.3s ease;
+}
+
+.box-cadastro .buttons-group button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #4cc2f8;
+}
+
+.box-cadastro .buttons-group #bt-voltar{
+    visibility: hidden;
+}
+
+.box-cadastro .buttons-group #bt-cadastrar{
+    visibility: vidible;
+}
+
+.box-cadastro .buttons-group #bt-avancar{
+    visibility: visible;
+}
