@@ -51,11 +51,13 @@ $(document).ready(function () {
 
 /*Validar senha*/
 function validarSenha(senha) {
-    var estrutura_senha = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,24}$/;
+    // var estrutura_senha = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,24}$/;
+    var estrutura_senha = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{5,24}$/;
     return estrutura_senha.test(senha);
 }
 
-
+var errorbox = document.querySelector('.erro');
+var errortext = document.querySelector('#erro-txt');
 
 function avancar1() {
     var nome = document.getElementById('nome').value;
@@ -63,25 +65,36 @@ function avancar1() {
     var cpf = document.getElementById('cpf').value;
     var checkbox = document.getElementById('check-termos');
 
-    if (nome !== "") {
-        if (sobrenome !== "") {
-            if (cpf !== "" && validarCPF(cpf) === true) {
+    if (nome != "") {
+        if (sobrenome != "") {
+            if (cpf != "" && validarCPF(cpf) === true) {
                 if (checkbox.checked) {
                     step1.classList.remove('show');
                     step2.classList.add('show');
                     botaoVoltar.style.visibility = 'visible';
+                    errorbox.style.display = 'none';
+                    errortext.innerHTML = "";
+
                 } else {
-                    alert('Aceite os termos de uso!');
+                    //alert('Aceite os termos de uso!');
+                    errorbox.style.display = 'flex';
+                    errortext.innerHTML = "<i class='bx bx-error-circle'></i>Você precisa aconcordar com os termos e plíticas de privacidade!";
                 }
 
             } else {
-                alert('CPF inválido!');
+                // alert('CPF inválido!');
+                errorbox.style.display = 'flex';
+                errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o CPF inválido!";
             }
         } else {
-            alert('Preencha o campo sobrenome!');
+            //alert('Preencha o campo sobrenome!');
+            errorbox.style.display = 'flex';
+            errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o sobrenome!";
         }
     } else {
-        alert('Preencha o campo nome!');
+        //alert('Preencha o campo nome!');
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o nome!";
     }
 }
 
@@ -125,6 +138,8 @@ function validarGenero() {
     }
 }
 
+
+
 function avancar2() {
     var email = document.getElementById('email').value;
     var celular = document.getElementById('celular').value;
@@ -139,19 +154,30 @@ function avancar2() {
                     step3.classList.add('show');
                     botaoCadastrar.style.visibility = 'visible';
                     botaoAvancar.style.visibility = 'hidden';
+                    errorbox.style.display = 'none';
+                    errortext.innerHTML = "";
                 } else {
-                    alert('As senhas não coincidem!');
+                    //alert('As senhas não coincidem!');
+                    errorbox.style.display = 'flex';
+                    errortext.innerHTML = "<i class='bx bx-error-circle'></i>As senhas não coincidem!";
                 }
 
             } else {
-                alert('Sua senha precisa conter caracter especial(!@*) letra maiúscula e número!');
+                //alert('Sua senha precisa conter caracter especial(!@*) letra maiúscula e número!');
+                errorbox.style.display = 'flex';
+                errortext.innerHTML = "<i class='bx bx-error-circle'></i>A senha deve ter de 8 a 24 caracteres e incluir pelo menos uma letra maiúscula, um número e um caractere especial (!, @, )";
             }
 
         } else {
-            alert('Celular inválido!');
+            //alert('Celular inválido!');
+            errorbox.style.display = 'flex';
+            errortext.innerHTML = "<i class='bx bx-error-circle'></i>Celular inválido!";
         }
     } else {
-        alert('E-mail inválido!');
+        //alert('E-mail inválido!');
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>E-mail inválido!";
+
     }
 
 }
@@ -161,56 +187,48 @@ function concluir() {
     var mes = parseInt(document.getElementById('mes')?.value);
     var ano = parseInt(document.getElementById('ano')?.value);
 
-
-    /*   let flag = true;
-       if (!dia) {
-           alert('Preencha a data de nascimento!');
-           flag = false;
-       } else if (!mes) {
-           alert('Preencha o mês de nascimento!');
-           flag = false;
-       } else if (!ano) {
-           alert('Preencha o ano de nascimento!');
-           flag = false;
-       }
-   
-       if (flag) {
-           ValidarData(dia, mes, ano);
-           step3.classList.remove('show');
-           alert('Cadastro concluído com sucesso!');
-       }*/
-
-    if (dia != "") {
-        if (mes != "") {
-            if (ano != "") {
-                if (ValidarData(dia, mes, ano)) {
-                    if (validarIdade() === true) {
-                        if (validarGenero() === true) {
-                            step3.classList.remove('show');
-                            alert('Cadastro concluído com sucesso!');
-                        } else {
-                            alert('Selecione um gênero!');
-                        }
-
-                    } else {
-                        alert('Você precisa ter mais de 18 anos para se cadastrar!');
-
-                    }
-                } else {
-                    alert('Data de nascimento inválida!');
-                }
-
-            } else {
-                alert('Preencha o ano de nascimento!');
-            }
-        } else {
-            alert('Preencha o mês de nascimento!');
-        }
-    } else {
-        alert('Preencha a data de nascimento!');
+    if (!dia) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha a data de nascimento!";
+        return;
     }
 
+    if (!mes) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o mês de nascimento!";
+        return;
+    }
+
+    if (!ano) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o ano de nascimento!";
+        return;
+    }
+
+    if (!ValidarData(dia, mes, ano)) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Data de nascimento inválida!";
+        return;
+    }
+
+    if (!validarIdade()) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Você precisa ter mais de 18 anos para se cadastrar!";
+        return;
+    }
+
+    if (!validarGenero()) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Selecione um gênero!";
+        return;
+    }
+
+    step3.classList.remove('show');
+    errorbox.style.display = 'none';
+    errortext.innerHTML = "";
+    $('#successAlert').fadeIn().delay(3000).fadeOut();
 }
+
 
 function voltra1() {
     step2.classList.remove('show');

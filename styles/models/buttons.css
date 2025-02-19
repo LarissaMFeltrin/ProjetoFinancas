@@ -54,7 +54,8 @@ header .auth-buttons .bt-cadastrar:hover {
 }
 
 .box-cadastro .buttons-group #bt-cadastrar {
-    visibility: hidden;
+    visibility: hidden;*
+    
 }
 
 .box-cadastro .buttons-group #bt-avancar {
