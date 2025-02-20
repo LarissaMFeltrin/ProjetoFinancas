@@ -1,6 +1,9 @@
+
 var step1 = document.querySelector('.box-cadastrar .step-1');
 var step2 = document.querySelector('.box-cadastrar .step-2');
 var step3 = document.querySelector('.box-cadastrar .step-3');
+var step4 = document.querySelector('.box-cadastrar .step-4');
+var step5 = document.querySelector('.box-cadastrar .step-5');
 
 var botaoAvancar = document.getElementById('bt-avancar');
 var botaoVoltar = document.getElementById('bt-voltar');
@@ -182,6 +185,52 @@ function avancar2() {
 
 }
 
+function cadastrar(){
+    var nome = document.getElementById('nome').value;
+    var sobrenome = document.getElementById('sobrenome').value;
+    var cpf = document.getElementById('cpf').value;
+    var email = document.getElementById('email').value;
+    var celular = document.getElementById('celular').value;
+    var senha = document.getElementById('senha').value;
+    var dia = parseInt(document.getElementById('dia')?.value);
+    var mes = parseInt(document.getElementById('mes')?.value);
+    var ano = parseInt(document.getElementById('ano')?.value);
+    var genero = document.querySelector('input[name="genero"]:checked').value;
+
+    $.ajax({
+        url: '../../requests/cadastrar/post_cadastrar.php',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            nome: nome,
+            sobrenome: sobrenome,
+            cpf: cpf,
+            email: email,
+            celular: celular,
+            senha: senha,
+            dia_nascimento: dia,
+            mes_nascimento: mes,
+            ano_nascimento: ano,
+            genero: genero
+        },
+        beforeSend: function() {
+            step3.classList.remove('show');
+            step4.classList.add('show');
+            botaoCadastrar.style.visibility = 'hidden';
+            botaoAvancar.style.visibility = 'hidden';
+            botaoVoltar.style.visibility = 'hidden';
+        },
+        success: function(response) {
+            step4.classList.remove('show');
+            step5.classList.add('show');
+        },
+        error: function(xhr, status, error) { // Correção aqui
+            console.error("Erro na requisição AJAX:", status, error);
+        }
+    });
+    
+}
+
 function concluir() {
     var dia = parseInt(document.getElementById('dia')?.value);
     var mes = parseInt(document.getElementById('mes')?.value);
@@ -223,10 +272,10 @@ function concluir() {
         return;
     }
 
-    step3.classList.remove('show');
     errorbox.style.display = 'none';
     errortext.innerHTML = "";
-    $('#successAlert').fadeIn().delay(3000).fadeOut();
+    cadastrar();
+    //$('#successAlert').fadeIn().delay(3000).fadeOut();
 }
 
 

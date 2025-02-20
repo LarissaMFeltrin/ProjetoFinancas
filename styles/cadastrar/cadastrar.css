@@ -78,6 +78,14 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button{
     display: none;
 }
 
+.content .box-cadastro .step-4{
+    display: none;
+}
+
+.content .box-cadastro .step-5{
+    display: none;
+}
+
 .content .box-cadastro .show{
     display: flex;
 }
@@ -143,4 +151,25 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button{
     color: #575757;
     background: #d8d8d8af;
 
+}
+
+/*step-4*/
+.content .box-cadastro .step-4 i{
+    font-size: 50px;
+    color: #26baff;
+}
+
+/*step-5*/
+.content .box-cadastro .step p{
+    color: #575757;
+}
+
+.content .box-cadastro .step-5 h1{
+    color: #26baff;
+    margin-bottom: 20px;
+}
+
+.content .box-cadastro .step-5 a{
+    color: #26baff;
+    margin-top: 10px;
 }

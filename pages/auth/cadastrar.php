@@ -1,7 +1,3 @@
-<?php
-
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,8 +9,8 @@
     <link rel="stylesheet" type="text/css" href="../../styles/models/global.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/buttons.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/errors.css">
-
     <link rel="stylesheet" type="text/css" href="../../styles/cadastrar/cadastrar.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/models/animation.css">
 
     <!--GoogleFontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,9 +41,9 @@
                 <p id="erro-txt"></p>
             </div>
 
-            <div id="successAlert" class="alert-success">
+            <!--<div id="successAlert" class="alert-success">
                 <span>Cadastro concluído com sucesso!</span>
-            </div>
+            </div>-->
 
             <div class="step step-1 show">
                 <input type="text" placeholder="Insira seu Nome" id="nome" maxlength="20">
@@ -90,6 +86,16 @@
                 </div>
             </div>
 
+            <div class="step step-4 ">
+                <i class='bx bx-loader-alt'></i>
+            </div>
+
+            <div class="step step-5 ">
+                <h1>Cadastro Concluido!</h1>
+                <p>Seu Cadastro foi realizado com sucesso.</p>
+                <a href="login.php">Clique para fazer login</a>
+            </div>
+
             <div class="buttons-group">
                 <button id="bt-voltar"><i class='bx bx-chevron-left-circle'></i></button>
                 <button id="bt-cadastrar"><i class='bx bx-check-circle'></i></button>
@@ -97,6 +103,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="../../scripts/cadastrar/cadastrar.js"></script>
     <script src="../../scripts/cadastrar/gender-select.js"></script>
