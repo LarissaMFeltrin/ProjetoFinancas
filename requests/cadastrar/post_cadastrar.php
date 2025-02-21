@@ -9,7 +9,7 @@ $cpf = $_POST['cpf'];
 $termos = 1;
 $email = $_POST['email'];
 $celular = $_POST['celular'];
-$senha = $_POST['senha'];
+
 $dia_nascimento = $_POST['dia_nascimento'];
 $mes_nascimento = $_POST['mes_nascimento'];
 $ano_nascimento = $_POST['ano_nascimento'];
@@ -18,6 +18,11 @@ $genero = $_POST['genero'];
 $codigo_verificacao = mt_rand(100000, 999999);
 
 $response = '';
+
+/*Senha Criptografia*/
+$senha_descrip = $_POST['senha'];
+$senha =password_hash($senha_descrip, PASSWORD_DEFAULT);
+
 
 $sql = mysqli_query($mysqli, "INSERT INTO usuarios(usuario_id, nome, sobrenome, cpf, termos, email, celular, senha, data_Nascimento, genero, codigo_verificacao) VALUES ('$usuario_id', '$nome', '$sobrenome', '$cpf', '$termos', '$email', '$celular', '$senha', '$data_nascimento', '$genero', '$codigo_verificacao')");
 

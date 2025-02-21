@@ -8,6 +8,9 @@ var step5 = document.querySelector('.box-cadastrar .step-5');
 var botaoAvancar = document.getElementById('bt-avancar');
 var botaoVoltar = document.getElementById('bt-voltar');
 var botaoCadastrar = document.getElementById('bt-cadastrar');
+var cpfVerificacao;
+var emailVerificacao;
+var celularVerificacao;
 
 function mascara(i) {
     var valorCPF = i.value;
@@ -68,38 +71,40 @@ function avancar1() {
     var cpf = document.getElementById('cpf').value;
     var checkbox = document.getElementById('check-termos');
 
-    if (nome != "") {
-        if (sobrenome != "") {
-            if (cpf != "" && validarCPF(cpf) === true) {
-                if (checkbox.checked) {
-                    step1.classList.remove('show');
-                    step2.classList.add('show');
-                    botaoVoltar.style.visibility = 'visible';
-                    errorbox.style.display = 'none';
-                    errortext.innerHTML = "";
-
-                } else {
-                    //alert('Aceite os termos de uso!');
-                    errorbox.style.display = 'flex';
-                    errortext.innerHTML = "<i class='bx bx-error-circle'></i>Você precisa aconcordar com os termos e plíticas de privacidade!";
-                }
-
-            } else {
-                // alert('CPF inválido!');
-                errorbox.style.display = 'flex';
-                errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o CPF inválido!";
-            }
-        } else {
-            //alert('Preencha o campo sobrenome!');
-            errorbox.style.display = 'flex';
-            errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o sobrenome!";
-        }
-    } else {
-        //alert('Preencha o campo nome!');
-        errorbox.style.display = 'flex';
-        errortext.innerHTML = "<i class='bx bx-error-circle'></i>Preencha o nome!";
+    if (nome === "") {
+        mostrarErro("Preencha o nome!");
+        return;
     }
+
+    if (sobrenome === "") {
+        mostrarErro("Preencha o sobrenome!");
+        return;
+    }
+
+    if (cpf === "" || !validarCPF(cpf) || cpfVerificacao !== 'Disponivel') {
+        mostrarErro("Preencha um CPF válido!");
+        return;
+    }
+
+    if (!checkbox.checked) {
+        mostrarErro("Você precisa concordar com os termos e políticas de privacidade!");
+        return;
+    }
+
+    // Se passou por todas as verificações, avança para o próximo passo
+    step1.classList.remove('show');
+    step2.classList.add('show');
+    botaoVoltar.style.visibility = 'visible';
+    errorbox.style.display = 'none';
+    errortext.innerHTML = "";
 }
+
+// Função auxiliar para exibir erros
+function mostrarErro(mensagem) {
+    errorbox.style.display = 'flex';
+    errortext.innerHTML = `<i class='bx bx-error-circle'></i> ${mensagem}`;
+}
+
 
 /*Validar idade dia-mes-ano */
 function validarIdade() {
@@ -149,43 +154,48 @@ function avancar2() {
     var senha = document.getElementById('senha').value;
     var confirmarSenha = document.getElementById('confirmarsenha').value;
 
-    if (validarEmail(email) === true) {
-        if (celular.length == 14 || celular.length == 15) {
-            if (validarSenha(senha) === true) {
-                if (confirmarSenha === senha) {
-                    step2.classList.remove('show');
-                    step3.classList.add('show');
-                    botaoCadastrar.style.visibility = 'visible';
-                    botaoAvancar.style.visibility = 'hidden';
-                    errorbox.style.display = 'none';
-                    errortext.innerHTML = "";
-                } else {
-                    //alert('As senhas não coincidem!');
-                    errorbox.style.display = 'flex';
-                    errortext.innerHTML = "<i class='bx bx-error-circle'></i>As senhas não coincidem!";
-                }
-
-            } else {
-                //alert('Sua senha precisa conter caracter especial(!@*) letra maiúscula e número!');
-                errorbox.style.display = 'flex';
-                errortext.innerHTML = "<i class='bx bx-error-circle'></i>A senha deve ter de 8 a 24 caracteres e incluir pelo menos uma letra maiúscula, um número e um caractere especial (!, @, )";
-            }
-
-        } else {
-            //alert('Celular inválido!');
-            errorbox.style.display = 'flex';
-            errortext.innerHTML = "<i class='bx bx-error-circle'></i>Celular inválido!";
-        }
-    } else {
-        //alert('E-mail inválido!');
+    if (!validarEmail(email)) {
         errorbox.style.display = 'flex';
-        errortext.innerHTML = "<i class='bx bx-error-circle'></i>E-mail inválido!";
-
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i> E-mail inválido!";
+        return;
     }
+
+    if (emailVerificacao !== 'Disponivel') {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i> Cadastre um e-mail que ainda não foi utilizado!";
+        return;
+    }
+
+    if (!(celular.length === 14 || celular.length === 15) || celularVerificacao !== 'Disponivel') {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i> Celular inválido!";
+        return;
+    }
+
+    if (!validarSenha(senha)) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i> A senha deve ter de 8 a 24 caracteres e incluir pelo menos uma letra maiúscula, um número e um caractere especial (!, @, )";
+        return;
+    }
+
+    if (confirmarSenha !== senha) {
+        errorbox.style.display = 'flex';
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i> As senhas não coincidem!";
+        return;
+    }
+
+    // Se passou por todas as validações, avança para o próximo passo
+    step2.classList.remove('show');
+    step3.classList.add('show');
+    botaoCadastrar.style.visibility = 'visible';
+    botaoAvancar.style.visibility = 'hidden';
+    errorbox.style.display = 'none';
+    errortext.innerHTML = "";
 
 }
 
-function cadastrar(){
+
+function cadastrar() {
     var nome = document.getElementById('nome').value;
     var sobrenome = document.getElementById('sobrenome').value;
     var cpf = document.getElementById('cpf').value;
@@ -213,22 +223,22 @@ function cadastrar(){
             ano_nascimento: ano,
             genero: genero
         },
-        beforeSend: function() {
+        beforeSend: function () {
             step3.classList.remove('show');
             step4.classList.add('show');
             botaoCadastrar.style.visibility = 'hidden';
             botaoAvancar.style.visibility = 'hidden';
             botaoVoltar.style.visibility = 'hidden';
         },
-        success: function(response) {
+        success: function (response) {
             step4.classList.remove('show');
             step5.classList.add('show');
         },
-        error: function(xhr, status, error) { // Correção aqui
+        error: function (xhr, status, error) { // Correção aqui
             console.error("Erro na requisição AJAX:", status, error);
         }
     });
-    
+
 }
 
 function concluir() {
@@ -314,3 +324,68 @@ botaoCadastrar.addEventListener('click', function () {
     concluir();
 });
 
+
+
+function verificarExistenciaCPF(cpf) {
+
+    $.ajax({
+        url: '../../requests/cadastrar/validar_cpf.php',
+        type: 'post',
+        data: {
+            cpf: cpf
+        }, success: function (response) {
+            if (response != "") {
+                errorbox.style.display = 'flex';
+                errortext.innerHTML = "<i class='bx bx-error-circle'></i>CPF já utilizado!";
+                cpfVerificacao = 'Já utiliazdo!';
+
+            } else {
+                errorbox.style.display = 'none';
+                cpfVerificacao = 'Disponivel';
+            }
+        }
+    })
+}
+
+
+function verificarExistenciaEmail(email) {
+    $.ajax({
+        url: '../../requests/cadastrar/validar_email.php',
+        type: 'post',
+        data: {
+            email: email
+        }, success: function (response) {
+            console.log('email ', response);
+
+            if (response != "") {
+                errorbox.style.display = 'flex';
+                errortext.innerHTML = "<i class='bx bx-error-circle'></i>E-mail já utilizado!";
+                emailVerificacao = 'Já utiliazdo!';
+
+            } else {
+                errorbox.style.display = 'none';
+                emailVerificacao = 'Disponivel';
+            }
+        }
+    })
+}
+
+function verificarExistenciaCelular(celular) {
+    console.log('celular ', celular);
+    $.ajax({
+        url: '../../requests/cadastrar/validar_celular.php',
+        type: 'post',
+        data: {
+            celular: celular
+        }, success: function (response) {
+            if (response != "") {
+                errorbox.style.display = 'flex';
+                errortext.innerHTML = "<i class='bx bx-error-circle'></i>Celular já utilizado!";
+                celularVerificacao = 'Já utilizado!';
+            } else {
+                errorbox.style.display = 'none';
+                celularVerificacao = 'Disponivel';
+            }
+        }
+    })
+} 

@@ -1,6 +1,6 @@
 <?php
 
-$dbHost ='localhost'; /*URL do servidor */
+$dbHost ='127.0.0.1'; /*URL do servidor */
 $dbUserName = 'root';
 $dbSenha ='';
 $dbName ='curso-website';

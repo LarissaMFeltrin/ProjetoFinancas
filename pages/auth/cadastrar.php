@@ -48,7 +48,9 @@
             <div class="step step-1 show">
                 <input type="text" placeholder="Insira seu Nome" id="nome" maxlength="20">
                 <input type="text" placeholder="Insira seu Sobrenome" id="sobrenome" maxlength="60">
-                <input type="text" placeholder="Insira seu CPF" id="cpf" oninput="mascara(this)">
+                <input type="text" placeholder="Insira seu CPF" id="cpf" oninput="mascara(this)"
+                    onkeyup="verificarExistenciaCPF(this.value)">
+
                 <!--Sempre colocar CPF como text pois as vezes o sistema pode desconsiderar o que começa com zero a esquerda-->
                 <div class="termos-uso">
                     <input type="checkbox" id="check-termos">
@@ -57,8 +59,10 @@
                 </div>
             </div>
             <div class="step step-2  ">
-                <input type="email" placeholder="Insira seu Email" id="email">
-                <input type="text" placeholder="Insira seu Celular" id="celular">
+                <input type="email" placeholder="Insira seu Email" id="email"
+                    onkeyup="verificarExistenciaEmail(this.value)">
+                <input type="text" placeholder="Insira seu Celular" id="celular"
+                    onkeyup="verificarExistenciaCelular(this.value)">
                 <input type="password" placeholder="Senha" id="senha">
                 <input type="password" placeholder="Confirmar Senha" id="confirmarsenha">
 
