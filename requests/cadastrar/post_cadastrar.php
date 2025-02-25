@@ -28,7 +28,7 @@ $senha =password_hash($senha_descrip, PASSWORD_DEFAULT);
 $sql = mysqli_query($mysqli, "INSERT INTO usuarios(usuario_id, nome, sobrenome, cpf, termos, email, celular, senha, data_Nascimento, genero, codigo_verificacao) VALUES ('$usuario_id', '$nome', '$sobrenome', '$cpf', '$termos', '$email', '$celular', '$senha', '$data_nascimento', '$genero', '$codigo_verificacao')");
 
 if($sql){
-    enviarEmail($email, "Código de verificação de e-mail", "Seu código de verificação é:" . $codigo_verificacao);
+    enviarEmail($email, "Código de verificação de e-mail", "Seu código de verificação é: " . $codigo_verificacao);
     $response = "Deu certo, Castrado!";
 }else{
     $response = "Falha";

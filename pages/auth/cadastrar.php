@@ -58,6 +58,7 @@
                             de privacidade</a>.</label>
                 </div>
             </div>
+
             <div class="step step-2  ">
                 <input type="email" placeholder="Insira seu Email" id="email"
                     onkeyup="verificarExistenciaEmail(this.value)">
@@ -65,9 +66,8 @@
                     onkeyup="verificarExistenciaCelular(this.value)">
                 <input type="password" placeholder="Senha" id="senha">
                 <input type="password" placeholder="Confirmar Senha" id="confirmarsenha">
-
-
             </div>
+
             <div class="step step-3 ">
                 <label for="">Insira sua data de nascimento</label>
                 <div class="group-data-nascimento">

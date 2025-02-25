@@ -46,3 +46,29 @@
     80% { opacity: 1; }
     100% { opacity: 0; transform: translateY(-10px); }
 }
+
+
+
+.sucesso{
+    display: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    width: fit-content;
+    max-width: 320px;
+    border: 1px solid #23da4b;
+    border-radius: 8px;
+    background:rgb(198, 253, 203) ; 
+}
+
+
+.sucesso p{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    color: #23da4b;
+}
+
+.sucesso p i{
+    margin-right: 3px;
+ }

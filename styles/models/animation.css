@@ -10,3 +10,7 @@
 .content .box-cadastro .step-4 i{
     animation: girar 1s linear infinite;
 }
+
+.content .box-verificar_email .step-2 i{
+    animation: girar 1s linear infinite;
+}
