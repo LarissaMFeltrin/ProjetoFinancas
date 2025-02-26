@@ -1,16 +1,26 @@
+<?php
+$code = '';
+if (isset($_GET['code'])) {
+    $code = $_GET['code'];
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Alterar Senha</title>
 
     <link rel="stylesheet" type="text/css" href="../../styles/models/global.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/buttons.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/errors.css">
-    <link rel="stylesheet" type="text/css" href="../../styles/login/login.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/animation.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/recuperar_senha/recuperar_senha.css">
+
 
     <!--GoogleFontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,38 +43,39 @@
 </head>
 
 <body>
-
     <div class="content">
 
-        <div class="box-login">
-            <div class="erro" style="display: none;">
-                <p id="erro-txt"></p>
-            </div>
+        <div class="box-recuperar-senha">
 
             <div class="step step-1 show">
-                <input type="email" placeholder="Insira seu Email" id="email" maxlength="100">
-                <input type="password" placeholder="senha" id="senha" maxlength="24">
+                <h1>Alterar Senha</h1>
+                <p>Digite abaixo sua nova senha.</p>
+                <input type="password" id="senha" placeholder="Insira sua nova senha">
+                <input type="password" id="confirmarSenha" placeholder="Confirme sua senha">
 
-                <div class="group-mostrarSenha">
-                    <input type="checkbox" id="mostrarsenha" onclick="mostrarSenha(this);">
-                    <label for="mostrarsenha">Mostrar senha</label>
-                </div>
-                <p>Não possui uma conta? <a href="cadastrar.php">Cadastre-se</a></p>
-                <a href="recuperar_senha.php">Esqueci minha senha</a>
+                <button class="default-button" onclick="alterarSenha(this);">Confirmar</button>
+
             </div>
 
             <div class="step step-2 ">
                 <i class='bx bx-loader-alt'></i>
             </div>
 
-            <div class="buttons-group">
-                <button onclick="login();">Login</button>
+            <div class="error">
+                <p id="error-text"></p>
             </div>
+
+            <div class="sucesso">
+                <p id="sucesso-txt"></p>
+            </div>
+
+            <input type="text" id="get_code" value="<?php echo $code ?>" hidden>
+
         </div>
     </div>
 
 
-    <script src="../../scripts/login/login.js"></script>
+    <script src="../../scripts/recuperar_senha/recuperar-senha.js"></script>
 
 </body>
 

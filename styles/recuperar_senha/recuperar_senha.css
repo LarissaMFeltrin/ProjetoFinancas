@@ -1,0 +1,111 @@
+body {
+    background: linear-gradient(145deg, #131313, #013995 190%);
+
+}
+
+/*opção para tirar as setinhas de número pra cim ou para baixo, fica somente para o usuario colocar o número.*/
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.content .box-recuperar-senha {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px 60px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+}
+
+.content .box-recuperar-senha .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
+.content .box-recuperar-senha .step h1{
+    color: #26baff;
+}
+
+.content .box-recuperar-senha .step a {
+    color: #26baff;
+    font-size: 14px;
+
+}
+
+.content .box-recuperar-senha .step input {
+    padding: 10px 15px;
+    width: 320px;
+    font-size: 16px;
+    margin: 10px 0px;
+    border-radius: 8px;
+    border-style: none;
+    text-align: center;
+    outline: none;
+    background: #f5f5f5;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+    color: #575757;
+}
+
+.step-2 {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #26baff;
+}
+
+.content .box-recuperar-senha .step-1 {
+    display: none;
+}
+
+.content .box-recuperar-senha .step-2 {
+    display: none;
+}
+
+
+.content .box-recuperar-senha .show {
+    display: flex;
+}
+
+
+.content .box-recuperar-senha .step p {
+    color: #575757;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.content .box-recuperar-senha .step p button {
+    color: #26baff;
+    margin-left: 4px;
+    border-style: none;
+    border: none;
+    background: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+

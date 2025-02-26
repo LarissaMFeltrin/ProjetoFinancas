@@ -86,3 +86,14 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button{
 .content .box-login .step p{
     color: #575757;
 }
+
+
+
+#mostrarsenha{
+    width: fit-content;
+}
+
+.group-mostrarSenha label{
+    font-size: 14px;
+    color: #575757;
+}

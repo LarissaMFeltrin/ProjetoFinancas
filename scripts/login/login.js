@@ -64,3 +64,15 @@ function login() {
         }
     })
 }
+
+function mostrarSenha(checkbok) {
+    var senha_input = document.getElementById('senha');
+
+    if (checkbok.checked) {
+        senha_input.type = 'text';
+    }else{
+        senha_input.type = 'password';
+
+    }
+
+}

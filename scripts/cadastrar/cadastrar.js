@@ -174,7 +174,7 @@ function avancar2() {
 
     if (!validarSenha(senha)) {
         errorbox.style.display = 'flex';
-        errortext.innerHTML = "<i class='bx bx-error-circle'></i> A senha deve ter de 8 a 24 caracteres e incluir pelo menos uma letra maiúscula, um número e um caractere especial (!, @, )";
+        errortext.innerHTML = "<i class='bx bx-error-circle'></i>A senha deve ter de 8 a 24 caracteres e incluir pelo menos uma letra maiúscula, um número e um caractere especial (!, @, )";
         return;
     }
 

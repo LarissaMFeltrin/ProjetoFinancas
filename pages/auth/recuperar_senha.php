@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastrar</title>
 
     <link rel="stylesheet" type="text/css" href="../../styles/models/global.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/buttons.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/errors.css">
-    <link rel="stylesheet" type="text/css" href="../../styles/login/login.css">
     <link rel="stylesheet" type="text/css" href="../../styles/models/animation.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/recuperar_senha/recuperar_senha.css">
+
 
     <!--GoogleFontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,38 +34,36 @@
 </head>
 
 <body>
-
     <div class="content">
 
-        <div class="box-login">
-            <div class="erro" style="display: none;">
-                <p id="erro-txt"></p>
-            </div>
+        <div class="box-recuperar-senha">
 
             <div class="step step-1 show">
-                <input type="email" placeholder="Insira seu Email" id="email" maxlength="100">
-                <input type="password" placeholder="senha" id="senha" maxlength="24">
-
-                <div class="group-mostrarSenha">
-                    <input type="checkbox" id="mostrarsenha" onclick="mostrarSenha(this);">
-                    <label for="mostrarsenha">Mostrar senha</label>
-                </div>
-                <p>Não possui uma conta? <a href="cadastrar.php">Cadastre-se</a></p>
-                <a href="recuperar_senha.php">Esqueci minha senha</a>
+                <h1>Recuperar Senha</h1>
+                <p>Insira seu e-mail para receber um link de alteração de senha.</p>
+                <input type="text" id="email" placeholder="Insira seu email">
+                <button class="default-button" id="submit-button" onclick="enviarEmailRecuperacao();">Enviar
+                    email</button>
+                <p>Não recebeu o E-mail? <button>Cliquie aqui para reenviar</button></p>
             </div>
 
             <div class="step step-2 ">
                 <i class='bx bx-loader-alt'></i>
             </div>
 
-            <div class="buttons-group">
-                <button onclick="login();">Login</button>
+            <div class="error">
+                <p id="error-text"></p>
             </div>
+
+            <div class="sucesso">
+                <p id="sucesso-txt"></p>
+            </div>
+
         </div>
     </div>
 
 
-    <script src="../../scripts/login/login.js"></script>
+    <script src="../../scripts/recuperar_senha/recuperar-senha.js"></script>
 
 </body>
 

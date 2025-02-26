@@ -45,7 +45,7 @@ function reenviarEmail(button) {
             if (response == 'Um novo código foi enviado ao seu E-mail!') {
                 loading.style.display = 'none';
                 sucessobox.style.display = 'flex';
-                sucessotext.innerHTML = "<i class='bx bx-mail-send'></i> " + response.message;
+                sucessotext.innerHTML = "<i class='bx bx-mail-send'></i> " + response.mensagem;
                 button.disabled = true;
                 button.style.cursor = 'not-allowed';
                 button.style.color = '#ccc';
@@ -57,7 +57,7 @@ function reenviarEmail(button) {
 
             } else {
                 errorbox.style.display = 'flex';
-                errortext.innerHTML = "<i class='bx bx-error-circle'></i> " + response.message;
+                errortext.innerHTML = "<i class='bx bx-error-circle'></i> " + response.mensagem;
             }
         }
 
